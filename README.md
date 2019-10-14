@@ -15,8 +15,11 @@ yarn add jsonifymd
 ```js
 import("https://cdn.jsdelivr.net/npm/jsonifymd@latest/dist/index.es.min.js")
   .then(({ default: jsonifymd }) => {
-    const json = jsonifymd.text(markdown_text) // From RAW text
-    const json = jsonifymd.url(markdown_url) // From URL
+    const config = {
+      explicit: false // headings are keys of objects instead of values
+    }
+    const json = jsonifymd.text(markdown_text, config) // From RAW text
+    const json = jsonifymd.url(markdown_url, config) // From URL
     console.log(json);
   );
 });
