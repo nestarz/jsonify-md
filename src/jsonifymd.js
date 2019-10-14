@@ -130,6 +130,9 @@ const _jsonifymd = (data, config = {}) => {
   const output = ast(data);
   const headings = nest(output.nodes);
 
+  if (config.explicit) {
+    return extract(headings);
+  }
   return toDict(extract(headings));
 };
 
