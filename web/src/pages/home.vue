@@ -30,9 +30,9 @@ module.exports = {
   watch: {
     markdown() {
       import(
-        "https://cdn.jsdelivr.net/npm/jsonifymd@latest/dist/index.es.min.js"
-      ).then(({ default: JsonifyMd }) => {
-        this.json = JSON.stringify(JsonifyMd.text(this.markdown), null, 4);
+        "https://unpkg.com/jsonifymd@latest/dist/index.es.min.js"
+      ).then(({ default: jsonifymd }) => {
+        this.json = JSON.stringify(jsonifymd.text(this.markdown), null, 4);
         console.log(this.json);
       });
     }

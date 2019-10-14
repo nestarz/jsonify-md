@@ -13,7 +13,7 @@ yarn add jsonifymd
 # Quickstart
 
 ```js
-import("https://cdn.jsdelivr.net/npm/jsonifymd@latest/dist/index.es.min.js")
+import("https://unpkg.com/jsonifymd@latest/dist/index.es.min.js")
   .then(({ default: jsonifymd }) => {
     const config = {
       explicit: false // headings are keys of objects instead of values
