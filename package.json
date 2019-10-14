@@ -1,7 +1,7 @@
 {
   "name": "jsonifymd",
   "sideEffects": false,
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Convert Markdown to JSON (ESM Library)",
   "src": "src/jsonifymd.js",
   "main": "dist/index.es.js",
