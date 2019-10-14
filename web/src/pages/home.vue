@@ -8,8 +8,14 @@
       <h1>JSON</h1>
       <textarea v-model="json" rows="10" cols="50" readonly></textarea>
     </div>
-    <a href="https://eliasrhouzlane.com">Elias Rhouzlane</a> -
-    <a href="https://www.npmjs.com/package/jsonifymd">https://www.npmjs.com/package/jsonifymd</a>
+    <div class="footer">
+      jsonifymd
+      <span>(</span>
+      <a href="https://github.com/nestarz/jsonifymd#readme">Github</a>,
+      <a href="https://www.npmjs.com/package/jsonifymd">NPM</a>,
+      <a href="https://github.com/nestarz">Author</a>
+      <span>)</span>
+    </div>
   </div>
 </template>
 
@@ -27,7 +33,7 @@ module.exports = {
         this.json = JSON.stringify(
           JsonifyMd.text(this.markdown, { toDict: true }),
           null,
-          2
+          4
         );
         console.log(this.json);
       });
@@ -49,5 +55,8 @@ textarea {
   width: 100%;
   height: 70vh;
   font-size: 1.5em;
+}
+
+.footer {
 }
 </style>
