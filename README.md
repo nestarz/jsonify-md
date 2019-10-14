@@ -1,3 +1,5 @@
+<img src="https://img.shields.io/bundlephobia/minzip/jsonifymd@latest?color=%2328cb95&label=gzip" />
+
 # jsonifymd
 
 Convert Markdown to JSON (ESM library)
