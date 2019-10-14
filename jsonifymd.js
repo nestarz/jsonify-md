@@ -126,10 +126,7 @@ const extract = (nodes) => {
   })
 }
 
-const jsonifymd = async (markdown_file, config = {}) => {
-  const response = await fetch(markdown_file);
-  const data = await response.text();
-
+const _jsonifymd = (data, config = {}) => {
   const output = ast(data);
   const headings = nest(output.nodes);
 
@@ -137,6 +134,16 @@ const jsonifymd = async (markdown_file, config = {}) => {
     return toDict(extract(headings));
   }
   return extract(headings);
+}
+
+const jsonifymd = {
+  url: async (url, config) => {
+    const response = await fetch(url);
+    const data = await response.text();
+
+    return _jsonifymd(data, config);
+  },
+  text: (text, config) => _jsonifymd(text, config),
 }
 
 export default jsonifymd;

@@ -1,44 +1,48 @@
 <template>
   <div class="home">
-    <div class="overlay">
-      <earth></earth>
+    <div>
+      <h1>Markdown</h1>
+      <textarea v-model="markdown" rows="10" cols="50"></textarea>
     </div>
-    <router-link
-      v-for="route in $router.options.routes"
-      :key="route.path"
-      :to="route.path"
-    >{{ route.name || route.path }}</router-link>
+    <div>
+      <h1>JSON</h1>
+      <textarea v-model="json" rows="10" cols="50"></textarea>
+    </div>
   </div>
 </template>
 
 <script>
 module.exports = {
-  components: {
-    earth: httpVueLoader("src/components/earth.vue")
+  data() {
+    return {
+      markdown: null,
+      json: null
+    };
   },
+  watch: {
+    markdown() {
+      console.log(this.markdown);
+      import(
+        "https://cdn.jsdelivr.net/npm/jsonifymd@0.1.0/dist/index.es.min.js"
+      ).then(async ({ default: JsonifyMd }) => {
+        this.json = JSON.stringify(
+          await JsonifyMd(
+            "https://raw.githubusercontent.com/Nipher/awesome-hacktivism/master/Readme.md",
+            { toDict: true }
+          )
+        );
+      });
+    }
+  }
 };
 </script>
 
 <style scoped>
 .home {
-  background: dimgrey;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-direction: column;
-  padding: 1em;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 0;
-}
-
-a {
-  z-index: 1;
+  padding: 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2em;
+  height: 100%;
 }
 </style>
