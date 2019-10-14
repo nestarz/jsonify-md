@@ -11,12 +11,10 @@ yarn add jsonifymd
 # Quickstart
 
 ```js
-import("/index.es.js").then(({ default: JsonifyMd }) => {
-  this.json = JSON.stringify(
-    JsonifyMd.text(this.markdown, { toDict: true }),
-    null,
-    4
+import("https://cdn.jsdelivr.net/npm/jsonifymd@latest/dist/index.es.min.js")
+  .then(({ default: jsonifymd }) => {
+    const json = jsonifymd.text(markdown, { toDict: true })
+    console.log(json);
   );
-  console.log(this.json);
 });
 ```
