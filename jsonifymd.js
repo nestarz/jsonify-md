@@ -80,7 +80,7 @@ const nest = (ast, level = 1) => {
     heading,
     childs: nest(headings[heading], level + 1)
   }));
-}
+};
 
 
 const extractInline = (nodes, raw) => {
@@ -94,8 +94,8 @@ const extractInline = (nodes, raw) => {
     const string = nodes[1].content;
     return string;
   }
-  return nodes.filter(node => node.nodes).flatMap(node => extractInline(node.nodes))
-}
+  return nodes.filter(node => node.nodes).flatMap(node => extractInline(node.nodes));
+};
 
 const toDict = (nodes) => (Array.isArray(nodes) && nodes[0].heading) ? Object.assign(
   ...nodes.map(({
@@ -106,13 +106,13 @@ const toDict = (nodes) => (Array.isArray(nodes) && nodes[0].heading) ? Object.as
   }))) : nodes;
 
 const extract = (nodes) => {
-  return nodes.flatMap(node => {
+  return nodes.map(node => {
     if (Array.isArray(node.childs)) {
       node.childs = extract(node.childs);
     }
 
     if (["bullet_list", "ordered_list"].includes(node.type)) {
-      return extract(node.nodes.filter(node => node.type === "list_item"))
+      return extract(node.nodes.filter(node => node.type === "list_item")).flat()
     }
     if (node.type === "list_item") {
       return extract(node.nodes.filter(node => ["paragraph", "bullet_list", "ordered_list"].includes(node.type)))
@@ -124,7 +124,7 @@ const extract = (nodes) => {
 
     return node;
   })
-}
+};
 
 const _jsonifymd = (data, config = {}) => {
   const output = ast(data);
@@ -134,7 +134,7 @@ const _jsonifymd = (data, config = {}) => {
     return toDict(extract(headings));
   }
   return extract(headings);
-}
+};
 
 const jsonifymd = {
   url: async (url, config) => {
@@ -144,6 +144,6 @@ const jsonifymd = {
     return _jsonifymd(data, config);
   },
   text: (text, config) => _jsonifymd(text, config),
-}
+};
 
 export default jsonifymd;

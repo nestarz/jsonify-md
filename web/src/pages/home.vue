@@ -6,8 +6,10 @@
     </div>
     <div>
       <h1>JSON</h1>
-      <textarea v-model="json" rows="10" cols="50"></textarea>
+      <textarea v-model="json" rows="10" cols="50" readonly></textarea>
     </div>
+    <a href="https://eliasrhouzlane.com">Elias Rhouzlane</a> -
+    <a href="https://www.npmjs.com/package/jsonifymd">https://www.npmjs.com/package/jsonifymd</a>
   </div>
 </template>
 
@@ -21,16 +23,13 @@ module.exports = {
   },
   watch: {
     markdown() {
-      console.log(this.markdown);
-      import(
-        "https://cdn.jsdelivr.net/npm/jsonifymd@0.1.0/dist/index.es.min.js"
-      ).then(async ({ default: JsonifyMd }) => {
+      import("/index.es.js").then(({ default: JsonifyMd }) => {
         this.json = JSON.stringify(
-          await JsonifyMd(
-            "https://raw.githubusercontent.com/Nipher/awesome-hacktivism/master/Readme.md",
-            { toDict: true }
-          )
+          JsonifyMd.text(this.markdown, { toDict: true }),
+          null,
+          2
         );
+        console.log(this.json);
       });
     }
   }
@@ -44,5 +43,11 @@ module.exports = {
   grid-template-columns: 1fr 1fr;
   grid-gap: 2em;
   height: 100%;
+}
+
+textarea {
+  width: 100%;
+  height: 70vh;
+  font-size: 1.5em;
 }
 </style>
