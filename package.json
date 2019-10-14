@@ -1,0 +1,35 @@
+{
+  "name": "jsonifymd",
+  "version": "0.1.0",
+  "description": "Convert Markdown to JSON",
+  "main": "jsonifymd.js",
+  "module": "dist/index.es.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nestarz/jsonify-md.git"
+  },
+  "keywords": [
+    "markdown",
+    "json",
+    "convert",
+    "javascript",
+    "remarkable"
+  ],
+  "author": "Elias Rhouzlane",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nestarz/jsonify-md/issues"
+  },
+  "homepage": "https://github.com/nestarz/jsonify-md#readme",
+  "dependencies": {
+    "remarkable": "^2.0.0"
+  },
+  "devDependencies": {
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.2"
+  }
+}
