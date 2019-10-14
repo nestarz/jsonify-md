@@ -2,6 +2,7 @@
   "name": "jsonifymd",
   "version": "0.1.2",
   "description": "Convert Markdown to JSON",
+  "src": "src/jsonifymd.js",
   "main": "dist/index.es.js",
   "module": "dist/index.es.js",
   "scripts": {

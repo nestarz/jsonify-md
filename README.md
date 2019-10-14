@@ -13,7 +13,8 @@ yarn add jsonifymd
 ```js
 import("https://cdn.jsdelivr.net/npm/jsonifymd@latest/dist/index.es.min.js")
   .then(({ default: jsonifymd }) => {
-    const json = jsonifymd.text(markdown, { toDict: true })
+    const json = jsonifymd.text(markdown_text) // From RAW text
+    const json = jsonifymd.url(markdown_url) // From URL
     console.log(json);
   );
 });

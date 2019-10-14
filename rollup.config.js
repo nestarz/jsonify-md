@@ -5,7 +5,7 @@ import { terser } from "rollup-plugin-terser";
 import pkg from "./package.json"
 
 const esm = (minify) => ({
-  input: pkg.main,
+  input: pkg.src,
   output: [
     {
       file: minify ? `${pkg.module.split('.js')[0]}.min.js` : pkg.module,
