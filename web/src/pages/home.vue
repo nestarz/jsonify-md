@@ -29,7 +29,7 @@ module.exports = {
   },
   watch: {
     markdown() {
-      import("/index.es.js").then(({ default: JsonifyMd }) => {
+      import("https://cdn.jsdelivr.net/npm/jsonifymd@latest/dist/index.es.min.js").then(({ default: JsonifyMd }) => {
         this.json = JSON.stringify(
           JsonifyMd.text(this.markdown, { toDict: true }),
           null,
