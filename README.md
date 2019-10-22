@@ -24,3 +24,7 @@ import("https://unpkg.com/jsonifymd@latest/dist/index.es.min.js")
   );
 });
 ```
+
+## Example
+
+https://jsonifymd.netlify.com
